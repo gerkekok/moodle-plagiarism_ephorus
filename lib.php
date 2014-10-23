@@ -197,7 +197,7 @@ class plagiarism_plugin_ephorus extends plagiarism_plugin {
                 FROM {course_modules} cm
                 LEFT JOIN {plagiarism_eph_assignment} ea ON ea.assignment = cm.instance
                 WHERE cm.id = ?';
-        if (($processtype = $DB->get_field_sql($sql, array($cmid))) || (!$cmid)) {
+        if (($processtype = $DB->get_field_sql($sql, array($cmid)))) {
             $processtype = ($processtype) ? $processtype : get_config('plagiarism_ephorus')->processtype;
             $mform->setDefault('ephorus_use', 'checked');
             $mform->setDefault('processtype', $processtype);
